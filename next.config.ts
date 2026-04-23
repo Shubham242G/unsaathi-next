@@ -33,7 +33,7 @@ const nextConfig: NextConfig = {
       },
       {
         source: '/services/annulment-Of-Marriage',
-        destination: '/services/annulment-of-marriage',
+        destination: '/services/annulment-0f-marriage',
         permanent: true,
       },
       {
@@ -64,16 +64,6 @@ const nextConfig: NextConfig = {
       {
         source: '/services/maintanance-And-Alimony',
         destination: '/services/maintenance-and-alimony',
-        permanent: true,
-      },
-      {
-        source: '/services/cruelty',
-        destination: '/services/cruelty',
-        permanent: true,
-      },
-      {
-        source: '/services/dowry',
-        destination: '/services/dowry',
         permanent: true,
       },
       
