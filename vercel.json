@@ -1,0 +1,54 @@
+{
+  "redirects": [
+    {
+      "source": "/why-Unsaathi",
+      "destination": "/why-unsaathi",
+      "permanent": true
+    },
+    {
+      "source": "/how-Unsaathi",
+      "destination": "/how-unsaathi",
+      "permanent": true
+    },
+    {
+      "source": "/About-Us",
+      "destination": "/about-us",
+      "permanent": true
+    },
+    {
+      "source": "/services/mutual-Divorce",
+      "destination": "/services/mutual-divorce",
+      "permanent": true
+    },
+    {
+      "source": "/services/annulment-Of-Marriage",
+      "destination": "/services/annulment-of-marriage",
+      "permanent": true
+    },
+    {
+      "source": "/services/child-Visitation",
+      "destination": "/services/child-visitation",
+      "permanent": true
+    },
+    {
+      "source": "/services/child-Custody",
+      "destination": "/services/child-custody",
+      "permanent": true
+    },
+    {
+      "source": "/services/contested-Divorce",
+      "destination": "/services/contested-divorce",
+      "permanent": true
+    },
+    {
+      "source": "/services/conjugal-Rights",
+      "destination": "/services/conjugal-rights",
+      "permanent": true
+    },
+    {
+      "source": "/services/judicial-Separation",
+      "destination": "/services/judicial-separation",
+      "permanent": true
+    }
+  ]
+}
