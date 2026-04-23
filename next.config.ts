@@ -10,11 +10,6 @@ const nextConfig: NextConfig = {
         destination: '/why-unsaathi',
         permanent: true, // 308 permanent redirect (SEO friendly)
       },
-      {
-        source: '/why-unsaathi/:path*',
-        destination: '/why-unsaathi/:path*',
-        permanent: true,
-      },
       
       // How Unsaathi redirects
       {
