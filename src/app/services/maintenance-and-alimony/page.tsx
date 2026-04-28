@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Lottie from 'lottie-react';
-import aboutAnimation from '../../bannerImages/beidge.json';
+import aboutAnimation from '../../../bannerImages/beidge.json';
 import Head from 'next/head';
 import { fetchFaqsByCategory } from '../../utils/fetchFaqs';
 import FaqAccordion from '../../component/FaqAccordion';
@@ -26,7 +26,7 @@ const MaintenanceAlimonyPage: React.FC = () => {
   useReviReady(isDataReady);
   
   useEffect(() => {
-    fetchFaqsByCategory("maintanance-and-alimony")
+    fetchFaqsByCategory("maintenance-and-alimony")
       .then((data: any) => {
         setFaqs(data);
       })
@@ -40,7 +40,7 @@ const MaintenanceAlimonyPage: React.FC = () => {
   const serviceData = {
     name: "Maintenance & Alimony Services",
     description: serviceDescription,
-    url: "/services/maintanance-And-Alimony"
+    url: "/services/maintenance-and-alimony"
   };
 
   // Breadcrumb Schema
@@ -64,7 +64,7 @@ const MaintenanceAlimonyPage: React.FC = () => {
         "@type": "ListItem",
         "position": 3,
         "name": "Maintenance & Alimony",
-        "item": "https://unsaathi.com/services/maintanance-And-Alimony"
+        "item": "https://unsaathi.com/services/maintenance-and-alimony"
       }
     ]
   };
@@ -81,7 +81,7 @@ const MaintenanceAlimonyPage: React.FC = () => {
           name="keywords" 
           content="alimony, maintenance, spousal support, section 125 CrPC, Hindu Marriage Act, divorce financial support" 
         />
-        <link rel="canonical" href="https://unsaathi.com/services/maintanance-And-Alimony" />
+        <link rel="canonical" href="https://unsaathi.com/services/maintenance-and-alimony" />
         
         {/* Organization Schema */}
         <script
@@ -212,7 +212,6 @@ const MaintenanceAlimonyPage: React.FC = () => {
 
       {/* FAQ SECTION */}
       <section className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="text-3xl font-bold mb-8 text-[#232122]">Frequently Asked Questions</h2>
         {/* @ts-ignore - Bypass type checking for FaqAccordion */}
         <FaqAccordion faqs={faqs} />
       </section>

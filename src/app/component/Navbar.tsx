@@ -4,16 +4,16 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
 const services = [
-  { label: "Restitution of Conjugal Rights", path: "/services/conjugal-Rights" },
-  { label: "Contested Divorce", path: "/services/contested-Divorce" },
-  { label: "Maintenance and Alimony", path: "/services/maintanance-And-Alimony" },
+  { label: "Restitution of Conjugal Rights", path: "/services/conjugal-rights" },
+  { label: "Contested Divorce", path: "/services/contested-divorce" },
+  { label: "Maintenance and Alimony", path: "/services/maintanance-and-alimony" },
   { label: "Dowry Cases", path: "/services/dowry" },
-  { label: "Child Custody", path: "/services/child-Custody" },
+  { label: "Child Custody", path: "/services/child-custody" },
   { label: "Cruelty", path: "/services/cruelty" },
-  { label: "Judicial separation", path: "/services/judicial-Separation" },
-  { label: "Child Visitation", path: "/services/child-Visitation" },
-  { label: "Annulment of Marriage", path: "/services/annulment-Of-Marriage" },
-  { label: "Mutual Divorce", path: "/services/mutual-Divorce" },
+  { label: "Judicial separation", path: "/services/judicial-separation" },
+  { label: "Child Visitation", path: "/services/child-visitation" },
+  { label: "Annulment of Marriage", path: "/services/annulment-of-marriage" },
+  { label: "Mutual Divorce", path: "/services/mutual-divorce" },
 ];
 
 function Navbar() {

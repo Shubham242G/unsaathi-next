@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import Lottie from 'lottie-react';
-import aboutAnimation from '../../bannerImages/beidge.json';
+import aboutAnimation from '../../../bannerImages/beidge.json';
 import Head from 'next/head';
 import { fetchFaqsByCategory } from '../../utils/fetchFaqs';
 import FaqAccordion from '../../component/FaqAccordion';
@@ -37,7 +37,7 @@ const MutualDivorcePage: React.FC = () => {
   const serviceDescription = "Both agreed to separate? File mutual divorce under Sec 13B HMA fast — waive 6-month cooling period too. India's best family lawyers at Unsaathi.";
   
   const serviceName = "Mutual Divorce";
-  const serviceUrl = "/services/mutual-Divorce";
+  const serviceUrl = "/services/mutual-divorce";
 
   // Breadcrumb Schema
   const breadcrumb = {
@@ -60,7 +60,7 @@ const MutualDivorcePage: React.FC = () => {
         "@type": "ListItem",
         "position": 3,
         "name": "Mutual Divorce",
-        "item": "https://unsaathi.com/services/mutual-Divorce"
+        "item": "https://unsaathi.com/services/mutual-divorce"
       }
     ]
   };
@@ -71,7 +71,7 @@ const MutualDivorcePage: React.FC = () => {
         <title>Best Mutual Divorce Lawyers in India | Fast & Easy | Unsaathi</title>
         <meta name="description" content={serviceDescription} />
         <meta name="keywords" content="mutual divorce, divorce lawyers, mutual consent divorce, section 13B, cooling-off period waiver" />
-        <link rel="canonical" href="https://unsaathi.com/services/mutual-Divorce" />
+        <link rel="canonical" href="https://unsaathi.com/services/mutual-divorce" />
         
         {/* Organization Schema */}
         <script
@@ -188,7 +188,6 @@ const MutualDivorcePage: React.FC = () => {
 
       {/* FAQ SECTION */}
       <section className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="text-3xl font-bold mb-8 text-[#232122]">Frequently Asked Questions</h2>
         {/* @ts-ignore - Bypass type checking for FaqAccordion */}
         <FaqAccordion faqs={faqs} />
       </section>

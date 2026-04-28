@@ -2,7 +2,7 @@
 
 import Lottie from 'lottie-react';
 import React, { useEffect, useState } from 'react';
-import aboutAnimation from '../../bannerImages/beidge.json';
+import aboutAnimation from '../../../bannerImages/beidge.json';
 import Head from 'next/head';
 import { fetchFaqsByCategory } from '../../utils/fetchFaqs';
 import FaqAccordion from '../../component/FaqAccordion';
@@ -141,7 +141,6 @@ const DowryCasesPage: React.FC = () => {
 
       {/* FAQ SECTION */}
       <section className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="text-3xl font-bold mb-8 text-[#232122]">FAQs</h2>
         {/* @ts-ignore - Bypass type checking for FaqAccordion */}
         <FaqAccordion faqs={faqs} />
       </section>

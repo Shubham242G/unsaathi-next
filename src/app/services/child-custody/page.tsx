@@ -1,8 +1,8 @@
 'use client'
 
 import Lottie from 'lottie-react';
-import aboutAnimation from '../../bannerImages/beidge.json';
-import React, { useEffect, useState } from 'react';
+import aboutAnimation from '../../../bannerImages/beidge.json';
+import React, { useEffect, useState, useRef } from 'react';
 import Head from 'next/head';
 import { fetchFaqsByCategory } from '../../utils/fetchFaqs';
 import FaqAccordion from '../../component/FaqAccordion';
@@ -33,6 +33,107 @@ const ChildCustodyPage: React.FC = () => {
       .finally(() => setLoading(false));
   }, []);
 
+  // Slider component
+  const GoverningLawsSlider: React.FC = () => {
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+    const animationRef = useRef<number | undefined>(undefined);
+    const isHovering = useRef(false);
+
+    const laws = [
+      {
+        title: "Hindu Minority and Guardianship Act, 1956",
+        description: "This law applies to Hindus. It emphasises that the welfare of the child is the primary consideration."
+      },
+      {
+        title: "Guardian and Wards Act, 1890",
+        description: "This secular law applies to all communities. The main goal of this law is to appoint a guardian who will take care of the child's interests and nurture them."
+      },
+      {
+        title: "Muslim Personal Law (Shariat) Application Act, 1937",
+        description: "The Muslim personal law governs the child custody rights and the guardianship matters of Muslims. Hizanat or child custody is usually granted to the mothers, and the fathers receive the child visitation rights."
+      },
+      {
+        title: "Christian and Parsi Law",
+        description: "The child custody disputes of Christian and Parsi individuals are now resolved under the Indian Divorce Act, 1869 or the Guardians and Wards Act, 1890."
+      }
+    ];
+
+    useEffect(() => {
+      const scrollContainer = scrollContainerRef.current;
+      if (!scrollContainer) return;
+
+      const autoScroll = () => {
+        if (!isHovering.current && scrollContainer) {
+          if (scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth - 2) {
+            scrollContainer.scrollLeft = 0;
+          } else {
+            scrollContainer.scrollLeft += 0.8;
+          }
+        }
+        animationRef.current = requestAnimationFrame(autoScroll);
+      };
+
+      animationRef.current = requestAnimationFrame(autoScroll);
+
+      return () => {
+        if (animationRef.current) {
+          cancelAnimationFrame(animationRef.current);
+        }
+      };
+    }, []);
+
+    return (
+      <section className="w-full py-12 px-4 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-10">
+            <h2 className="text-4xl font-bold mb-3">Laws Governing Child Custody in India</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Child custody is one of the significant aspects of divorce. In India, child custody is governed by the following laws:
+            </p>
+          </div>
+
+          <div 
+            className="relative"
+            onMouseEnter={() => isHovering.current = true}
+            onMouseLeave={() => isHovering.current = false}
+          >
+            <div
+              ref={scrollContainerRef}
+              className="overflow-x-auto scrollbar-hide"
+              style={{ 
+                scrollbarWidth: 'none', 
+                msOverflowStyle: 'none',
+                cursor: 'grab'
+              }}
+            >
+              <div className="flex gap-8" style={{ minWidth: 'min-content' }}>
+                {[...laws, ...laws].map((law, index) => (
+                  <div
+                    key={index}
+                    className="w-[350px] md:w-[400px] flex-shrink-0 bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                  >
+                    <div className="p-7">
+                      <h3 className="text-2xl font-bold text-[#232122] mb-4">
+                        {law.title}
+                      </h3>
+                      <p className="text-gray-500 text-sm leading-relaxed">
+                        {law.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Subtle fade effect on edges */}
+            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
+          </div>
+        </div>
+      </section>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-[#f9f6f2] font-serif text-[#3d3d3d]">
       <Head>
@@ -41,8 +142,8 @@ const ChildCustodyPage: React.FC = () => {
         <meta name="keywords" content="divorce lawyer delhi, mutual divorce delhi" />
       </Head>
       
-      {/* Hero Section */}
-      <section className="w-full min-h-screen flex flex-col justify-center items-center bg-white text-center px-4 py-8">
+      {/* Hero Section - Reduced bottom padding */}
+      <section className="w-full flex flex-col justify-center items-center bg-white text-center px-4 pt-16 pb-8">
         {/* Text Content */}
         <h1 className="text-4xl md:text-5xl font-extrabold mb-3">
           Understanding Child Custody
@@ -54,11 +155,14 @@ const ChildCustodyPage: React.FC = () => {
           During a divorce, determining child custody is one of the most critical decisions. The primary goal of the Indian legal system is to ensure the child's welfare and stability.
         </p>
 
-        {/* Lottie Banner Illustration */}
-        <div className="flex justify-center w-full max-w-xl mx-auto mb-8">
-          <Lottie animationData={aboutAnimation} loop={true} className="w-full h-100" />
+        {/* Lottie Banner Illustration - Reduced bottom margin */}
+        <div className="flex justify-center w-full max-w-xl mx-auto mb-4">
+          <Lottie animationData={aboutAnimation} loop={true} className="w-full h-auto" />
         </div>
       </section>
+
+      {/* Governing Laws Slider Section - Second section from top with reduced gap */}
+      <GoverningLawsSlider />
 
       {/* Types of Custody Section */}
       <section className="w-full py-20 px-4">
@@ -108,16 +212,6 @@ const ChildCustodyPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Governing Laws Section */}
-      <section className="w-full py-20 px-4 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-4">Laws Governing Child Custody</h2>
-          <p className="text-lg text-gray-600">
-            In India, child custody is determined by a framework of secular and personal laws, including the **Guardians and Wards Act, 1890**, the **Hindu Minority and Guardianship Act, 1956**, and personal laws applicable to different religious communities. In all cases, the child's welfare is the paramount consideration.
-          </p>
-        </div>
-      </section>
-
       {/* Final CTA Section */}
       <section className="bg-[#fff8f3] py-16">
         <div className="max-w-3xl mx-auto px-4 text-center">
@@ -141,7 +235,6 @@ const ChildCustodyPage: React.FC = () => {
 
       {/* FAQ SECTION */}
       <section className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="text-3xl font-bold mb-8 text-[#232122]">FAQs</h2>
         {/* @ts-ignore - Bypass type checking for FaqAccordion */}
         <FaqAccordion faqs={faqs} />
       </section>

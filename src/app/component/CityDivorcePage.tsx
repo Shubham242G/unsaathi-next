@@ -139,7 +139,6 @@ const CityDivorcePage: React.FC = () => {
 
         {/* FAQ SECTION */}
         <section className="max-w-6xl mx-auto px-6 py-16">
-          <h2 className="text-3xl font-bold mb-8 text-[#232122]">FAQs</h2>
           {/* @ts-ignore - Bypass type checking for FaqAccordion */}
           <FaqAccordion faqs={faqs} />
         </section>

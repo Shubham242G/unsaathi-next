@@ -1,8 +1,8 @@
 'use client'
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Lottie from 'lottie-react';
-import aboutAnimation from '../../bannerImages/beidge.json';
+import aboutAnimation from '../../../bannerImages/beidge.json';
 import Head from 'next/head';
 import FaqAccordion from '../../component/FaqAccordion';
 import { fetchFaqsByCategory } from '../../utils/fetchFaqs';
@@ -13,7 +13,7 @@ const JudicialSeparationPage: React.FC = () => {
 
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent(
-      "Hello, I'd like to connect with a legal advisor regarding Mutual Divorce."
+      "Hello, I'd like to connect with a legal advisor regarding Judicial Separation."
     );
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
   };
@@ -33,12 +33,121 @@ const JudicialSeparationPage: React.FC = () => {
       .finally(() => setLoading(false));
   }, []);
 
+  // Slider component for Grounds
+  const GroundsSlider: React.FC = () => {
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
+    const animationRef = useRef<number | undefined>(undefined);
+    const isHovering = useRef(false);
+
+    const grounds = [
+      {
+        title: "Cruelty",
+        description: "If either of the spouses inflicts mental or physical abuse on the other spouse, it counts as cruelty. The cruelty encompasses a comprehensive range of behaviour, which includes verbal abuse, neglect, emotional abuse, financial deprivation, physical abuse, etc."
+      },
+      {
+        title: "Desertion",
+        description: "If either of the spouses abandons the other without any justification or consent it can be a ground for judicial separation."
+      },
+      {
+        title: "Adultery",
+        description: "When one of the spouses cohabits with another individual."
+      },
+      {
+        title: "Insanity",
+        description: "When either of the spouses has been declared mentally unfit."
+      },
+      {
+        title: "Leprosy",
+        description: "If one of the spouses contracts leprosy in a communicable form, it becomes a ground for judicial separation."
+      },
+      {
+        title: "Venereal Disease",
+        description: "When one spouse contracts a disease in a communicable form."
+      }
+    ];
+
+    useEffect(() => {
+      const scrollContainer = scrollContainerRef.current;
+      if (!scrollContainer) return;
+
+      const autoScroll = () => {
+        if (!isHovering.current && scrollContainer) {
+          if (scrollContainer.scrollLeft + scrollContainer.clientWidth >= scrollContainer.scrollWidth - 2) {
+            scrollContainer.scrollLeft = 0;
+          } else {
+            scrollContainer.scrollLeft += 0.8;
+          }
+        }
+        animationRef.current = requestAnimationFrame(autoScroll);
+      };
+
+      animationRef.current = requestAnimationFrame(autoScroll);
+
+      return () => {
+        if (animationRef.current) {
+          cancelAnimationFrame(animationRef.current);
+        }
+      };
+    }, []);
+
+    return (
+      <section className="w-full py-20 px-4 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Common Grounds for Separation</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              The grounds for judicial separation are generally the same as those for a contested divorce. These include:
+            </p>
+          </div>
+
+          <div 
+            className="relative"
+            onMouseEnter={() => isHovering.current = true}
+            onMouseLeave={() => isHovering.current = false}
+          >
+            <div
+              ref={scrollContainerRef}
+              className="overflow-x-auto scrollbar-hide"
+              style={{ 
+                scrollbarWidth: 'none', 
+                msOverflowStyle: 'none',
+                cursor: 'grab'
+              }}
+            >
+              <div className="flex gap-8" style={{ minWidth: 'min-content' }}>
+                {[...grounds, ...grounds].map((ground, index) => (
+                  <div
+                    key={index}
+                    className="w-[350px] md:w-[400px] flex-shrink-0 bg-[#fef9f5] rounded-2xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
+                  >
+                    <div className="p-7">
+                      <h3 className="text-2xl font-bold text-[#c48e53] mb-4">
+                        {ground.title}
+                      </h3>
+                      <p className="text-gray-600 text-sm leading-relaxed">
+                        {ground.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Subtle fade effect on edges */}
+            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-white to-transparent pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-white to-transparent pointer-events-none"></div>
+          </div>
+        </div>
+      </section>
+    );
+  };
+
   return (
     <div className="min-h-screen bg-[#f9f6f2] font-serif text-[#3d3d3d]">
       <Head>
         <title>Best Judicial Separation Lawyers in India | Unsaathi</title>
         <meta name="description" content="Want to live apart without divorce? File for Judicial Separation under Sec 10 HMA with India's best family lawyers. Stay legally protected. Call: +91 9266877791" />
-        <meta name="keywords" content="divorce lawyer delhi, mutual divorce delhi" />
+        <meta name="keywords" content="judicial separation, legal separation india, divorce lawyer" />
       </Head>
       
       {/* Hero Section */}
@@ -100,31 +209,17 @@ const JudicialSeparationPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Grounds for Separation Section */}
-      <section className="w-full py-20 px-4 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-4">Common Grounds for Separation</h2>
-          <p className="text-lg text-gray-600 mb-8">
-            The grounds for judicial separation are generally the same as those for a contested divorce. These include:
-          </p>
-          <div className="flex flex-wrap justify-center gap-4 text-gray-700">
-            <span className="bg-[#f5e7db] px-4 py-2 rounded-full">Adultery</span>
-            <span className="bg-[#f5e7db] px-4 py-2 rounded-full">Cruelty</span>
-            <span className="bg-[#f5e7db] px-4 py-2 rounded-full">Desertion</span>
-            <span className="bg-[#f5e7db] px-4 py-2 rounded-full">Conversion</span>
-            <span className="bg-[#f5e7db] px-4 py-2 rounded-full">Unsoundness of Mind</span>
-          </div>
-        </div>
-      </section>
+      {/* Grounds for Separation Section with Autoplay Slider */}
+      <GroundsSlider />
 
       {/* Final CTA Section */}
       <section className="bg-[#fff8f3] py-16">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-neutral-900 mb-4">
-            Begin Your Fresh Start
+            Seek Expert Legal Guidance
           </h2>
           <p className="text-[#c48e53] mb-8">
-            A mutual divorce doesn't have to be a battle. Let our experts guide you through this streamlined process to ensure a peaceful and dignified resolution.
+            Understanding judicial separation? Let our expert legal advisors guide you through your rights and options with complete confidentiality.
           </p>
 
           <div className="flex justify-center">
@@ -140,7 +235,6 @@ const JudicialSeparationPage: React.FC = () => {
 
       {/* FAQ SECTION */}
       <section className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="text-3xl font-bold mb-8 text-[#232122]">FAQs</h2>
         {/* @ts-ignore - Bypass type checking for FaqAccordion */}
         <FaqAccordion faqs={faqs} />
       </section>

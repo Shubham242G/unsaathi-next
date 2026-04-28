@@ -13,7 +13,7 @@ interface Service {
 const services: Service[] = [
   { label: "Restitution of Conjugal Rights", path: "/services/conjugal-rights" },
   { label: "Contested Divorce", path: "/services/contested-divorce" },
-  { label: "Maintenance and Alimony", path: "/services/maintanance-and-alimony" },
+  { label: "Maintenance and Alimony", path: "/services/maintenance-and-alimony" },
   { label: "Dowry Cases", path: "/services/dowry" },
   { label: "Child Custody", path: "/services/child-custody" },
   { label: "Cruelty", path: "/services/cruelty" },
@@ -24,7 +24,6 @@ const services: Service[] = [
 ];
 
 const ServicesPage: React.FC = () => {
-  // Initialize as empty array without type annotation to let TypeScript infer
   const [faqs, setFaqs] = useState([]);
 
   useEffect(() => {
@@ -38,16 +37,17 @@ const ServicesPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#f5f1ed]">
       {/* HERO SECTION */}
-      <section className="min-h-[60vh] flex items-center justify-center px-6 py-16 bg-[#f5f1ed]">
+      <section className="min-h-[70vh] flex items-center justify-center px-6 py-16 bg-[#f5f1ed]">
         <div className="max-w-7xl w-full grid md:grid-cols-2 gap-10 items-center">
-          {/* LEFT: Video */}
-          <div className="w-full h-[30vh] md:h-[35vh] rounded-2xl overflow-hidden shadow-lg bg-[#f5f1ed]">
+          {/* LEFT: Video with transparency */}
+          <div className="w-full h-[40vh] md:h-[45vh] overflow-hidden">
             <video
               autoPlay
               loop
               muted
               playsInline
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover mix-blend-multiply"
+              style={{ background: 'transparent' }}
             >
               <source src="/assets/servicePage.mp4" type="video/mp4" />
             </video>
@@ -108,10 +108,7 @@ const ServicesPage: React.FC = () => {
       </section>
 
       {/* FAQ SECTION (for services page) */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
-        <h2 className="text-3xl font-bold mb-8 text-[#232122]">FAQs</h2>
-        <FaqAccordion faqs={faqs} />
-      </section>
+      <FaqAccordion faqs={faqs} />
     </div>
   );
 };
