@@ -8,24 +8,24 @@ import FaqAccordion from '../../component/FaqAccordion';
 import { fetchFaqsByCategory } from '../../utils/fetchFaqs';
 import { useReviReady } from '../../hooks/useReviReady';
 
-const CrueltyInMarriagePage: React.FC = () => {
+const AnnulmentOfMarriagePage: React.FC = () => {
   const whatsappNumber = '919266877791';
 
   const handleWhatsAppClick = () => {
     const message = encodeURIComponent(
-      "Hello, I'd like to connect with a legal advisor regarding cruelty in a marriage."
+      "Hello, I'd like to connect with a legal advisor regarding Annulment of Marriage."
     );
     window.open(`https://wa.me/${whatsappNumber}?text=${message}`, '_blank');
   };
-
-  const [faqs, setFaqs] = useState<any[]>([]);
+  
+  const [faqs, setFaqs] = useState([]);
   const [loading, setLoading] = useState<boolean>(true);
 
   const isDataReady = !loading && faqs !== null;
   useReviReady(isDataReady);
   
   useEffect(() => {
-    fetchFaqsByCategory("cruelty")
+    fetchFaqsByCategory("annulment-of-marriage")
       .then((data: any) => {
         setFaqs(data);
       })
@@ -33,34 +33,43 @@ const CrueltyInMarriagePage: React.FC = () => {
       .finally(() => setLoading(false));
   }, []);
 
-  // Slider component for Types of Cruelty
-  const CrueltyTypesSlider: React.FC = () => {
+  // Grounds data array
+  const groundsForAnnulment = [
+    {
+      title: "Bigamy",
+      description: "If any one of the spouses was already married at the time of the purported marriage."
+    },
+    {
+      title: "Consanguinity or Affinity",
+      description: "If the marriage between persons is within prohibited degrees of relationships, for example, close relatives."
+    },
+    {
+      title: "Unsoundness of Mind",
+      description: "If any of the spouses was of unsound mind at the time of marriage."
+    },
+    {
+      title: "Force or Coercion",
+      description: "If the marriage was done under duress of any third party."
+    },
+    {
+      title: "Fraud",
+      description: "If one party obtained marriage through fraud of a material fact."
+    },
+    {
+      title: "Minor's Marriage",
+      description: "If the marriage was proceeding even after it being illegal, i.e. a marriage of minors."
+    },
+    {
+      title: "Lack of Consent",
+      description: "If one party did not give genuine permission for the marriage."
+    }
+  ];
+
+  // Slider component for Grounds of Annulment
+  const GroundsSlider: React.FC = () => {
     const scrollContainerRef = useRef<HTMLDivElement>(null);
     const animationRef = useRef<number | undefined>(undefined);
     const isHovering = useRef(false);
-
-    const crueltyTypes = [
-      {
-        title: "Physical Cruelty",
-        description: "Beating, slapping, pushing, or any form of physical violence against the spouse. Physical cruelty is the most direct form and is relatively easier to establish through medical records, police complaints, and witness testimony."
-      },
-      {
-        title: "Mental and Emotional Cruelty",
-        description: "Persistent humiliation, verbal abuse, false accusations, threats, gaslighting, isolation from family, or causing constant psychological distress. Indian courts have repeatedly held that mental cruelty can be as grave as physical cruelty — and sometimes more so."
-      },
-      {
-        title: "Economic Cruelty",
-        description: "Controlling or withholding finances, preventing the spouse from working, misappropriating shared assets, or creating financial dependency as a tool of abuse."
-      },
-      {
-        title: "Sexual Cruelty",
-        description: "Forced sexual acts, denying conjugal rights without cause, or using sexual behaviour as punishment or control."
-      },
-      {
-        title: "Social Cruelty",
-        description: "Publicly humiliating the spouse, isolating them from friends and family, damaging their reputation, or forcing them out of social life."
-      }
-    ];
 
     useEffect(() => {
       const scrollContainer = scrollContainerRef.current;
@@ -90,9 +99,9 @@ const CrueltyInMarriagePage: React.FC = () => {
       <section className="w-full py-20 px-4 bg-white overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Types of Cruelty Recognised by Indian Courts</h2>
+            <h2 className="text-4xl font-bold mb-4">Common Grounds for Annulment</h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Understanding the different forms of cruelty can help you identify and address abuse in your marriage
+              A marriage may be annulled if it was invalid from the start. Common grounds across various laws include:
             </p>
           </div>
 
@@ -111,17 +120,22 @@ const CrueltyInMarriagePage: React.FC = () => {
               }}
             >
               <div className="flex gap-8" style={{ minWidth: 'min-content' }}>
-                {[...crueltyTypes, ...crueltyTypes].map((type, index) => (
+                {[...groundsForAnnulment, ...groundsForAnnulment].map((ground, index) => (
                   <div
                     key={index}
                     className="w-[350px] md:w-[400px] flex-shrink-0 bg-[#fef9f5] rounded-2xl shadow-md border border-gray-100 overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
                   >
                     <div className="p-7">
-                      <h3 className="text-2xl font-bold text-[#c48e53] mb-4">
-                        {type.title}
-                      </h3>
+                      <div className="flex items-center mb-4">
+                        <div className="w-10 h-10 bg-[#c48e53] rounded-full flex items-center justify-center text-white font-bold text-lg mr-3">
+                          {(index % groundsForAnnulment.length) + 1}
+                        </div>
+                        <h3 className="text-2xl font-bold text-[#c48e53]">
+                          {ground.title}
+                        </h3>
+                      </div>
                       <p className="text-gray-600 text-sm leading-relaxed">
-                        {type.description}
+                        {ground.description}
                       </p>
                     </div>
                   </div>
@@ -141,110 +155,97 @@ const CrueltyInMarriagePage: React.FC = () => {
   return (
     <div className="min-h-screen bg-[#f9f6f2] font-serif text-[#3d3d3d]">
       <Head>
-        <title>Best Cruelty & 498A Lawyers in India | Unsaathi Legal Help</title>
-        <meta name="description" content="Suffering physical or mental cruelty in marriage? India's best lawyers at Unsaathi help you file under Sec 498A IPC & Sec 13 HMA. Call now: +91 9266877791" />
-        <meta name="keywords" content="divorce lawyer delhi, mutual divorce delhi" />
+        <title>Best Annulment of Marriage Lawyers in India | Unsaathi</title>
+        <meta name="description" content="Marriage void or voidable? Get your marriage annulled under Sec 11 & 12 HMA with India's best family lawyers. Decree of nullity made simple. Call: +91 9266877791" />
+        <meta name="keywords" content="annulment lawyer india, marriage annulment, void marriage, nullity of marriage, family lawyer" />
       </Head>
       
-      {/* --- Hero Section (Banner) --- */}
+      {/* Hero Section */}
       <section className="w-full py-20 px-4 bg-white text-center">
-        <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
-          Cruelty in Marriage? The Law is on Your Side.
+        <h1 className="text-4xl md:text-5xl font-extrabold mb-8">
+          Annulment of Marriage in India
         </h1>
-        <h2 className="text-2xl md:text-3xl font-bold text-[#c48e53] mb-6">
-          Your Right to a Safe and Dignified Life
+
+        <h2 className="text-2xl md:text-3xl font-bold text-[#c48e53] mb-4">
+          A Comprehensive Guide to Nullifying Unions
         </h2>
-        <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-          Choosing kindness and compassion over cruelty reflects true strength, showcasing courage, empathy, and resilience—not a sign of weakness.
+
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
+          Discover valid reasons for the annulment of the marriage. Understand the annulment of marriage through this step-by-step guide to voiding a marriage
         </p>
-        <div className="flex justify-center w-full max-w-xl mx-auto mt-12">
-          <Lottie animationData={aboutAnimation} loop={true} className="w-full h-auto" />
+
+        {/* Lottie Banner Illustration */}
+        <div className="flex justify-center w-full max-w-xl mx-auto mb-8">
+          <Lottie animationData={aboutAnimation} loop={true} className="w-full h-100" />
         </div>
+
+        <h2 className="text-2xl md:text-3xl font-bold text-[#c48e53]">
+          Legally Declaring a Marriage Null and Void
+        </h2>
+        <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4 mb-10">
+          An annulment is a legal procedure that declares a marriage void from its inception, as if it never happened. This is fundamentally different from a divorce, which dissolves a legally valid marriage.
+        </p>
       </section>
 
-      {/* --- Explanation of Cruelty --- */}
-      <section className="w-full py-20 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-4">What is Cruelty in a Marriage?</h2>
-          <p className="text-lg text-gray-600 leading-relaxed">
-            Cruelty in Marriage or Domestic Violence refers to behaviour that causes physical, emotional, or mental suffering to a spouse, making it difficult for the victim to continue living with the offender. It is a valid ground for divorce under Indian law.
-          </p>
-        </div>
-      </section>
-
-      {/* --- Types of Cruelty Section with Autoplay Slider --- */}
-      <CrueltyTypesSlider />
-
-      {/* --- Governing Laws Section --- */}
+      {/* Governing Laws Section */}
       <section className="w-full py-20 px-4">
         <div className="max-w-screen-xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold">Laws for Cruelty</h2>
+            <h2 className="text-4xl font-bold">Laws Governing Annulment</h2>
             <p className="text-lg text-[#c48e53] mt-2">
-              In India, there are various laws that govern domestic violence cases.
+              The grounds and procedures for annulment are defined by various personal laws in India.
             </p>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Hindu Marriage Act Card */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
               <h3 className="text-xl font-bold mb-3 text-center">Hindu Marriage Act, 1955</h3>
               <p className="text-gray-700 text-sm">
-                Section 13(1)(a) allows divorce on the grounds of cruelty. This can include persistent accusations, abusive language, or harassment for dowry.
+                Section 12 allows for annulment on grounds like impotence, unsoundness of mind, consent obtained by force or fraud, and the bride being pregnant by another person at the time of marriage.
               </p>
             </div>
 
             {/* Special Marriage Act Card */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
               <h3 className="text-xl font-bold mb-3 text-center">Special Marriage Act, 1954</h3>
               <p className="text-gray-700 text-sm">
-                Section 27(1)(d) considers cruelty a valid ground for divorce for inter-faith or civil marriages.
+                This secular law provides similar grounds for annulment for inter-faith and civil marriages, ensuring uniform rights for couples registered under this act.
               </p>
             </div>
-            
+
             {/* Muslim Personal Law Card */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
               <h3 className="text-xl font-bold mb-3 text-center">Muslim Personal Law</h3>
               <p className="text-gray-700 text-sm">
-                The Dissolution of Muslim Marriage Act, 1939, empowers women to seek divorce ('khula') if their husband subjects them to cruelty.
+                Under Shariat, an annulment (known as 'Faskh') can be sought if the marriage is irregular (fasid) or void (batil) due to issues like lack of proper witnesses or marriage within prohibited relationships.
               </p>
             </div>
 
             {/* Indian Divorce Act Card */}
-            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200">
+            <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-200 hover:shadow-xl transition-shadow duration-300">
               <h3 className="text-xl font-bold mb-3 text-center">Indian Divorce Act, 1869</h3>
               <p className="text-gray-700 text-sm">
-                Section 10 provides cruelty as a ground for divorce for Christian couples, where it has made life unsafe and unbearable.
+                For Christian marriages, Section 19 lists grounds for annulment, including bigamy, one party being a "lunatic or idiot," or the parties being within prohibited degrees of relation.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* --- Criminal Offense Section --- */}
-      <section className="w-full py-20 px-4 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <blockquote className="border-l-4 border-[#c48e53] pl-6 italic">
-            <p className="text-2xl text-gray-800 leading-relaxed">
-              "Domestic violence is not a private matter. It is a crime."
-            </p>
-            <footer className="mt-4 text-right text-lg text-gray-600">- Sandra Day O'Connor</footer>
-          </blockquote>
-          <p className="text-lg text-gray-600 mt-8">
-            Under Section 498A of the IPC and Section 85 of the BNS, 2023, cruelty by a husband or his relatives is a criminal offense punishable with imprisonment up to three years and a fine.
-          </p>
-        </div>
-      </section>
+      {/* Grounds for Annulment - AUTO-SCROLLING SLIDER */}
+      <GroundsSlider />
 
-      {/* --- Final CTA Section --- */}
+      {/* Final CTA Section */}
       <section className="bg-[#fff8f3] py-16">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-3xl font-bold text-neutral-900 mb-4">
-            Seek Confidential Legal Support
+            Ready to Begin Your Fresh Start?
           </h2>
           <p className="text-[#c48e53] mb-8">
-            You do not have to endure this alone. Let our expert legal advisors guide you through your rights and options with complete confidentiality.
+            Whether you're seeking an annulment or need legal advice, our expert family lawyers are here to help you navigate the process with compassion and expertise.
           </p>
+
           <div className="flex justify-center">
             <button onClick={handleWhatsAppClick}
               className="bg-[#c48e53] hover:bg-[#b57d45] text-white font-semibold py-3 px-6 rounded-full flex items-center justify-center gap-2 transition-all duration-300 shadow-md hover:shadow-lg"
@@ -261,8 +262,10 @@ const CrueltyInMarriagePage: React.FC = () => {
         {/* @ts-ignore - Bypass type checking for FaqAccordion */}
         <FaqAccordion faqs={faqs} />
       </section>
+
+      
     </div>
   );
 };
 
-export default CrueltyInMarriagePage;
+export default AnnulmentOfMarriagePage;

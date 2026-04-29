@@ -6,7 +6,7 @@ import Link from "next/link";
 const services = [
   { label: "Restitution of Conjugal Rights", path: "/services/conjugal-rights" },
   { label: "Contested Divorce", path: "/services/contested-divorce" },
-  { label: "Maintenance and Alimony", path: "/services/maintanance-and-alimony" },
+  { label: "Maintenance and Alimony", path: "/services/maintenance-and-alimony" },
   { label: "Dowry Cases", path: "/services/dowry" },
   { label: "Child Custody", path: "/services/child-custody" },
   { label: "Cruelty", path: "/services/cruelty" },
