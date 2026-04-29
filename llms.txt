@@ -13,7 +13,7 @@ Their core value proposition lies in providing accessible, affordable, and exper
 - [Mutual Divorce](https://www.unsaathi.com/services/mutual-divorce): Learn about the process and requirements for a mutual consent divorce.
 - [Contested Divorce](https://www.unsaathi.com/services/contested-divorce): Understand the legal steps involved in a contested divorce proceeding.
 - [Conjugal Rights](https://www.unsaathi.com/services/conjugal-rights): Information on legal rights and remedies related to conjugal relationships.
-- [Maintenance and Alimony](https://www.unsaathi.com/services/maintanance-and-alimony): Details on legal provisions for maintenance and alimony in divorce cases.
+- [Maintenance and Alimony](https://www.unsaathi.com/services/maintenance-and-alimony): Details on legal provisions for maintenance and alimony in divorce cases.
 - [Dowry](https://www.unsaathi.com/services/dowry): Legal information and recourse concerning dowry-related issues.
 - [Cruelty](https://www.unsaathi.com/services/cruelty): Understand legal definitions and implications of cruelty in marriage.
 - [Child Custody](https://www.unsaathi.com/services/child-custody): Learn about legal aspects and procedures for child custody disputes.
@@ -40,4 +40,3 @@ Their core value proposition lies in providing accessible, affordable, and exper
 
 ---
 
-This file was generated for www.unsaathi.com using the [LLMs.txt Generator Tool](https://llmrefs.com/tools/llms-txt-generator)
