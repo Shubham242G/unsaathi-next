@@ -45,10 +45,10 @@ const GurgaonDivorcePage: React.FC = () => {
   return (
     <div className="bg-[#f5f1ed] text-[#232122]">
       <Head>
-        <title>Best Divorce Lawyer in Gurgaon | Unsaathi</title>
+        <title>Best Divorce Lawyer in Gurgaon | Free Consultation & Expert Help</title>
         <meta 
           name="description" 
-          content="Looking for a divorce lawyer in Gurgaon? Unsaathi offers expert legal help for mutual & contested divorce, custody, alimony & more." 
+          content="Looking for the best divorce lawyer in Gurgaon? Unsaathi provides expert, confidential, and affordable legal support. Book your consultation today." 
         />
       </Head>
 

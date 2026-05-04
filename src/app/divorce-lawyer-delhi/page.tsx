@@ -45,10 +45,10 @@ const DelhiDivorcePage: React.FC = () => {
   return (
     <div className="bg-[#f5f1ed] text-[#232122]">
       <Head>
-        <title>Best Divorce Lawyer in Delhi | Unsaathi</title>
+        <title>Best Divorce and Family Lawyers in Delhi – Expert Legal Help</title>
         <meta 
           name="description" 
-          content="Looking for the best divorce lawyer in Delhi? Unsaathi offers expert legal help for divorce, custody, alimony & family disputes. Get consultation today." 
+          content="Looking for the best divorce and family lawyers in Delhi? Unsaathi offers expert, confidential, and affordable legal support. Book your free consultation today." 
         />
       </Head>
 

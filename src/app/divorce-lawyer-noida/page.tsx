@@ -23,7 +23,7 @@ const NoidaDivorcePage: React.FC = () => {
     { label: "Cruelty", path: "/services/cruelty" },
     { label: "Judicial Separation", path: "/services/judicial-separation" },
     { label: "Child Visitation", path: "/services/child-visitation" },
-    { label: "Annulment of Marriage", path: "/services/annulment-Of-marriage" },
+    { label: "Annulment of Marriage", path: "/services/annulment-of-marriage" },
     { label: "Mutual Divorce", path: "/services/mutual-divorce" },
   ];
 
@@ -45,10 +45,10 @@ const NoidaDivorcePage: React.FC = () => {
   return (
     <div className="bg-[#f5f1ed] text-[#232122]">
       <Head>
-        <title>Best Divorce Lawyer in Noida | Unsaathi</title>
+        <title>Best Divorce and Family Lawyers in Noida – Expert Legal Help</title>
         <meta 
           name="description" 
-          content="Looking for the best divorce lawyer in Noida? Unsaathi offers expert legal help for divorce, custody, alimony & family disputes. Get consultation today." 
+          content="Looking for the best divorce and family lawyers in Noida? Unsaathi offers expert, confidential, and affordable legal support. Book your free consultation today." 
         />
       </Head>
 
@@ -87,7 +87,7 @@ const NoidaDivorcePage: React.FC = () => {
           Our Legal Services in Noida
         </h2>
         <p className="text-center text-gray-600 mb-10">
-          Serving Noida Family Court and District Courts across Gautam Buddh Nagar.
+          Serving major courts across Noida including District Court, Surajpur & Family Court.
         </p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, i) => (
